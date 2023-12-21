@@ -16,5 +16,5 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
             event-type: submodule_update
-            token: ${{ secrets.GITHUB_TOKEN }}
+            token: ${{ secrets.ACTION_TOKEN }}
             repository: ${{ matrix.repo }}
