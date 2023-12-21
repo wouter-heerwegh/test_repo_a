@@ -13,7 +13,8 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Dispatch to workflows
-        run: |
-            gh api /repos/${{ matrix.repo }}/actions/workflows/build_dev.yml/dispatches --input - <<< '{"event_type":"submodule_update", "repo":${{ github.repository }}}'
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peter-evans/repository-dispatch@v2
+        with:
+            event-type: submodule_update
+            token: ${{ secrets.GITHUB_TOKEN }}
+            repository: ${{ matrix.repo }}
